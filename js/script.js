@@ -31,5 +31,15 @@ function operate(num1, num2, operator) {
         default:
             return null;
     }
-
 }
+
+function pressDigit(event) {
+    let value = event.target.textContent;
+    let calcDisplay = document.querySelector(".calc-display");
+    calcDisplay.textContent = calcDisplay.textContent + value;
+    number1 = parseInt(calcDisplay.textContent);
+    console.log(number1);
+}
+
+digitButtons = document.querySelectorAll(".digit");
+digitButtons.forEach(button => button.addEventListener("click", pressDigit));
