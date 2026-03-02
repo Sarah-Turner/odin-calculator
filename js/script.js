@@ -33,13 +33,33 @@ function operate(num1, num2, operator) {
     }
 }
 
+function clearDisplay() {
+    let calcDisplay = document.querySelector(".calc-display");
+    calcDisplay.textContent = "";
+}
+
+function updateDisplay(value) {
+    let calcDisplay = document.querySelector(".calc-display");
+    calcDisplay.textContent = calcDisplay.textContent + value;
+}
+
 function pressDigit(event) {
     let value = event.target.textContent;
     let calcDisplay = document.querySelector(".calc-display");
-    calcDisplay.textContent = calcDisplay.textContent + value;
+    updateDisplay(value);
     number1 = parseInt(calcDisplay.textContent);
     console.log(number1);
 }
 
-digitButtons = document.querySelectorAll(".digit");
+function AC(event) {
+    number1 = null;
+    number2 = null;
+    operator = null;
+    clearDisplay();
+}
+
+let digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(button => button.addEventListener("click", pressDigit));
+
+let ACButton = document.querySelector(".AC");
+ACButton.addEventListener("click", AC);
