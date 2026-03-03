@@ -45,7 +45,8 @@ h1 {
 
 .digit,
 .op,
-.AC {
+.AC,
+.back-space {
     font-size: 20px;
     color: white;
     background-color: cornflowerblue;
@@ -61,7 +62,8 @@ h1 {
     padding: 20px 30px;
 }
 
-.AC {
+.AC,
+.back-space {
     padding: 20px 30px;
     border-radius: 30px;
     margin-bottom: 10px;

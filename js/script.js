@@ -53,17 +53,38 @@ function pressDigit(event) {
     }
     let value = event.target.textContent;
     let calcDisplay = document.querySelector(".calc-display");
-
+    if (value === "." && calcDisplay.textContent.includes(".")) {
+        return;
+    }
     if (operator === null && number2 === null) { // state 1 updating number1
         updateDisplay(value);
-        number1 = parseInt(calcDisplay.textContent);
+        if (calcDisplay.textContent.length > 15) {
+            number1 = parseFloat(parseFloat(calcDisplay.textContent).toFixed(14));
+            clearDisplay();
+            updateDisplay(number1);
+        } else {
+            number1 = parseFloat(calcDisplay.textContent);
+        }
+
     } else if (number1 !== null && operator !== null && number2 === null) { // enter state 3 clear screen and update number2
         clearDisplay();
         updateDisplay(value);
-        number2 = parseInt(calcDisplay.textContent);
+        if (calcDisplay.textContent.length > 15) {
+            number2 = parseFloat(parseFloat(calcDisplay.textContent).toFixed(14));
+            clearDisplay();
+            updateDisplay(number2);
+        } else {
+            number2 = parseFloat(calcDisplay.textContent);
+        }
     } else if (number1 !== null && operator !== null && number2 !== null) { // staying in state 3 update number2
         updateDisplay(value);
-        number2 = parseInt(calcDisplay.textContent);
+        if (calcDisplay.textContent.length > 15) {
+            number2 = parseFloat(parseFloat(calcDisplay.textContent).toFixed(14));
+            clearDisplay();
+            updateDisplay(number2);
+        } else {
+            number2 = parseFloat(calcDisplay.textContent);
+        }
     }
 }
 
@@ -88,6 +109,13 @@ function pressOperator(event) {
         number2 = null; // set the state back to 2
         if (op !== "=") {
             operator = op;
+        }
+
+        
+        if (String(number1).length > 15) {
+            number1 = parseFloat(number1.toFixed(14));
+        } else {
+            number1 = parseFloat(number1.toFixed(14));
         }
         clearDisplay();
         updateDisplay(number1);
