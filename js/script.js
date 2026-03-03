@@ -130,6 +130,18 @@ function AC(event) {
     error = false;
 }
 
+function pressDel(event) {
+    let calcDisplay = document.querySelector(".calc-display");
+    if (calcDisplay.textContent.length > 0) {
+        calcDisplay.textContent = calcDisplay.textContent.slice(0, calcDisplay.textContent.length - 1);
+        if (number2 === null) {
+            number1 = parseFloat(calcDisplay.textContent);
+        } else if (number2 !== null) {
+            number2 = parseFloat(calcDisplay.textContent);
+        }
+    }
+}
+
 let digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(button => button.addEventListener("click", pressDigit));
 
@@ -138,3 +150,6 @@ ACButton.addEventListener("click", AC);
 
 let opButtons = document.querySelectorAll(".op");
 opButtons.forEach(button => button.addEventListener("click", pressOperator));
+
+let delButton = document.querySelector(".back-space");
+delButton.addEventListener("click", pressDel);
