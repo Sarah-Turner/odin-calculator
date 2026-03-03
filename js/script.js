@@ -53,10 +53,7 @@ function pressDigit(event) {
     }
     let value = event.target.textContent;
     let calcDisplay = document.querySelector(".calc-display");
-    console.log("Before")
-    console.log({number1});
-    console.log({number2});
-    console.log({operator});
+
     if (operator === null && number2 === null) { // state 1 updating number1
         updateDisplay(value);
         number1 = parseInt(calcDisplay.textContent);
@@ -68,10 +65,6 @@ function pressDigit(event) {
         updateDisplay(value);
         number2 = parseInt(calcDisplay.textContent);
     }
-    console.log("After")
-    console.log({number1});
-    console.log({number2});
-    console.log({operator});
 }
 
 function pressOperator(event) {
