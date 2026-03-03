@@ -132,7 +132,15 @@ function AC(event) {
 
 function pressDel(event) {
     let calcDisplay = document.querySelector(".calc-display");
-    if (calcDisplay.textContent.length > 0) {
+    if (calcDisplay.textContent.length === 1) {
+        calcDisplay.textContent = calcDisplay.textContent.slice(0, calcDisplay.textContent.length - 1);
+        if (number2 === null) {
+            number1 = null;
+            operator = null;
+        } else if (number2 !== null) {
+            number2 = null;
+        }
+    } else if (calcDisplay.textContent.length > 0) {
         calcDisplay.textContent = calcDisplay.textContent.slice(0, calcDisplay.textContent.length - 1);
         if (number2 === null) {
             number1 = parseFloat(calcDisplay.textContent);
